@@ -1,0 +1,18 @@
+
+
+{% block content %}
+<table style="height: 100%; width: 100%;">
+<tr>
+    <th>vak</th>
+    <th>titel</th>
+    <th>lokaal</th>
+</tr>
+{% for punt in agenda %}
+<tr>
+    <td>{{punt["vak"]}}</td>
+    <td>{{punt["titel"]}}</td>
+    <td>{{punt["lokaal"]}}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

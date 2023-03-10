@@ -1,0 +1,22 @@
+
+
+{% block content %}
+<table style="height: 100%; width: 100%;">
+<tr>
+    <th>soort</th>
+    <th>vak</th>
+    <th>titel</th>
+    <th>onderwerp</th>
+    <th>datum</th>
+</tr>
+{% for punt in todo %}
+<tr>
+    <td>{{punt["soort"]}}</td>
+    <td>{{punt["vak"]}}</td>
+    <td>{{punt["titel"]}}</td>
+    <td>{{punt["onderwerp"]}}</td>
+    <td>{{punt["eind_time"]}}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

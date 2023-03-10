@@ -1,0 +1,39 @@
+
+
+{% block content %}
+<table style="height: 100%; width: 100%;">
+<tr>
+    <th>DW</th>
+    <th>soort</th>
+    <th>vak</th>
+    <th>titel</th>
+    <th>datum</th>
+    <th>pub datum</th>
+    <th>punt</th>
+    <th>%</th>
+</tr>
+{% for punt in punten %}
+<tr>
+    {% set score = (punt["score"]| float) * (punt["tot_sc"] | float) %}
+    <td style="width: 4%;">{{punt["DW"]}}</td>
+    <td style="width: 4%;">{{punt["soort"]}}</td>
+    <td style="width: 10%;">{{punt["vak"]}}</td>
+    <td>{{punt["titel"]}}</td>
+    <td>{{punt["datum"].split(' ')[0]}}</td>
+    
+    <td>{{punt["pub_datum"].split(' ')[0]}}</td>
+    {% if score != 0.0 %}
+    <td style="width: 25%;">
+    <div class="progress">
+    <div class="progress-bar progress-bar-{% if score >= punt['gew_sc'] %}good{% else %}bad{% endif %}" role="progressbar" aria-valuenow="{{ score }}" aria-valuemin="0" aria-valuemax="{{ punt['tot_sc'] }}" style="width: {{ (score/punt['tot_sc']) * 100 }}%;"><div style="width:100%;position: relative; left: 50%;">punt</div></div>
+    </div>
+    </td>
+    {% else %}
+    <td>N/A</td>
+    {% endif %}
+    
+    <td>%</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

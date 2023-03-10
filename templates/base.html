@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="static/css.css">
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} Custom schoolware</title>
+</head>
+
+<body>
+      <div class="multi-button">
+        <button id="1" class="button out-left" onclick="tabs(1)">agenda</button>
+        <button id="2" class="button" onclick="tabs(2)">punten</button>
+        <button id="3" class="button out-right" onclick="tabs(3)">taken</button>
+      </div>
+    </div>
+    <div id="content"> 
+
+    </div>
+</body>
+
+<script>
+  var state = 1
+  function tabs(tab) {
+    var element = document.getElementById("content");
+    state = tab
+    //for agenda
+    if (tab == 1) {
+        document.getElementById("1").classList.add("hover");
+        document.getElementById("2").classList.remove("hover");
+        document.getElementById("3").classList.remove("hover");
+
+
+        element.innerHTML = "<div class='loader'></div>"
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            element.innerHTML =
+                this.responseText;
+        }
+        xhttp.open("GET", "/agenda");
+        xhttp.send();
+    }
+    //for punten
+    if (tab == 2) {
+        document.getElementById("1").classList.remove("hover");
+        document.getElementById("2").classList.add("hover");
+        document.getElementById("3").classList.remove("hover");
+
+    
+        element.innerHTML = "<div class='loader'></div>"
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            element.innerHTML = "<div class='loader'></div>".innerHTML =
+                this.responseText;
+        }
+        xhttp.open("GET", "/punten");
+        xhttp.send();
+    }
+    //for todo
+    if (tab == 3) {
+        document.getElementById("1").classList.remove("hover");
+        document.getElementById("2").classList.remove("hover");
+        document.getElementById("3").classList.add("hover");
+
+
+        element.innerHTML = "<div class='loader'></div>"
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            element.innerHTML = "<div class='loader'></div>".innerHTML =
+                this.responseText;
+        }
+        xhttp.open("GET", "/todo");
+        xhttp.send();
+    }
+}
+
+function arrows(e) {
+  if (e.key === 'ArrowRight') {
+      state += 1
+      if(state > 3){
+        state = 3
+      }
+      tabs(state)
+  }
+  if (e.key === 'ArrowLeft') {
+    state -= 1
+    if(state < 1){
+      state = 1
+    }
+    tabs(state)
+}
+}
+document.addEventListener('keyup', arrows, false);
+tabs(1)
+</script>
+</html>
