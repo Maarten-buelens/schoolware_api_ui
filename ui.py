@@ -1,9 +1,4 @@
-import sys
-<<<<<<< HEAD:ui.py
 from schoolware_api import schoolware_api
-=======
-from schoolware_api import schoolware
->>>>>>> e74d601022f3f6d91ce16c56c0dcc88660e6a035:flask.py
 import json
 from flask import Flask, render_template, request
 import threading
