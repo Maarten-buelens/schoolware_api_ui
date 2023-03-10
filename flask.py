@@ -1,5 +1,4 @@
 import sys
-sys.path.insert(1, '/home/mb/schoolware_api/schoolware_api')
 from schoolware_api import schoolware
 import json
 from flask import Flask, render_template, request
