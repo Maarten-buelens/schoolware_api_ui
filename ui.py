@@ -1,33 +1,15 @@
 import sys
-<<<<<<< HEAD:ui.py
-from schoolware_api import schoolware_api
-=======
+sys.path.insert(1, '/home/mb/schoolware_api/schoolware_api')
 from schoolware_api import schoolware
->>>>>>> e74d601022f3f6d91ce16c56c0dcc88660e6a035:flask.py
 import json
 from flask import Flask, render_template, request
-import threading
-from termcolor import colored
+
 
 
 config = json.loads(open("./config.json","r").read())
-schoolware = schoolware_api(config)
+schoolware = schoolware(config)
 app = Flask(__name__)
 
-
-class Background_process(threading.Thread):
-     def __init__(self):
-         super(Background_process, self).__init__()
- 
-     def run(self):
-         from time import sleep
-         while True:
-            sleep(5*60)
-            print(colored("background task: checking token","blue"))
-            schoolware.check_if_valid()
-
-background_task = Background_process()
-background_task.start()
 
 @app.route("/")
 def base():

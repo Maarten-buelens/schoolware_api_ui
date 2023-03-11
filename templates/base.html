@@ -91,5 +91,34 @@ function arrows(e) {
 }
 document.addEventListener('keyup', arrows, false);
 tabs(1)
+let touchstartX = 0
+let touchendX = 0
+    
+function checkDirection() {
+  if (touchendX > touchstartX && (touchendX-touchstartX) > 125){ 
+    state -= 1
+    if(state < 1){
+      state = 1
+    }
+    tabs(state)    
+  }
+  if (touchendX < touchstartX && (touchendX-touchstartX) < -125){
+    state += 1
+    if(state > 3){
+      state = 3
+    }
+    tabs(state) 
+  }
+}
+
+
+document.addEventListener('touchstart', e => {
+  touchstartX = e.changedTouches[0].screenX
+})
+
+document.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX
+  checkDirection()
+})
 </script>
 </html>
