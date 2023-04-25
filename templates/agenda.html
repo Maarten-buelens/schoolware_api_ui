@@ -1,6 +1,11 @@
 
 
 {% block content %}
+<div id="date" class="button out-left out-right" style="width: 15%; margin-top: 10px;margin-left: auto;margin-right: auto;float: unset;position: relative;top: 55px;text-align: center;overflow: auto;" onclick=""></div>
+<script>display_current_date();</script>
+<button class="button out-right out-left" style="float: left;width: 15%; margin-top: 20px;" onclick="update_date(false)">&lt;</button>
+<button class="button out-left out-right" style="float: right;width: 15%; margin-top: 20px;" onclick="update_date(true)">&gt;</button>
+
 <table style="height: 100%; width: 100%;">
 <tr>
     <th>vak</th>
@@ -15,4 +20,6 @@
 </tr>
 {% endfor %}
 </table>
+
+
 {% endblock %}

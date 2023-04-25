@@ -9,13 +9,15 @@
     <th>onderwerp</th>
     <th>datum</th>
 </tr>
+
 {% for punt in todo %}
 <tr>
     <td>{{punt["soort"]}}</td>
     <td>{{punt["vak"]}}</td>
     <td>{{punt["titel"]}}</td>
     <td>{{punt["onderwerp"]}}</td>
-    <td>{{punt["eind_time"]}}</td>
+    {% set date = punt["eind_time"].split(' ')[0] %}
+    <td>{{punt["day"]}} {{date.split('-')[1]}}-{{date.split('-')[2]}}</td>
 </tr>
 {% endfor %}
 </table>

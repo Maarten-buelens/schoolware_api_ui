@@ -1,17 +1,11 @@
-<<<<<<< HEAD
-import sys
-sys.path.insert(1, '/home/mb/schoolware_api/schoolware_api')
-from schoolware_api import schoolware
-=======
 from schoolware_api import schoolware_api
->>>>>>> 5812c1c7131e67158b76df6919c9adc42fa73512
 import json
 from flask import Flask, render_template, request
 
 
 
 config = json.loads(open("./config.json","r").read())
-schoolware = schoolware(config)
+schoolware = schoolware_api(config)
 app = Flask(__name__)
 
 

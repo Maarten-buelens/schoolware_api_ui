@@ -10,6 +10,7 @@ body {font-family: Arial;}
 
 /* Style the buttons inside the tab */
 .tab button {
+  width: 33.33%;
   background-color: inherit;
   float: left;
   border: none;
@@ -96,6 +97,7 @@ body {font-family: Arial;}
 
   .button {
     border : 0;
+    width: 33.33%;
     float: left;
     background-color: #2ea44f;
     color: white;
@@ -152,6 +154,7 @@ body {font-family: Arial;}
   .hover{
     box-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
     color: #3c4043;
+    background-color: #0c8f32;
   }
 
   .progress-bar-bad
