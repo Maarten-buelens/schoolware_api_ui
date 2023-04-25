@@ -1,0 +1,4 @@
+
+
+
+tabs(Number(getCookie("page")))
