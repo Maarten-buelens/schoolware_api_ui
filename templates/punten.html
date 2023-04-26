@@ -12,6 +12,7 @@
     <th>punt</th>
     <th>%</th>
 </tr>
+{% set weekday = {"Sunday":"Zondag","Monday":"Maandag","Tuesday":"Dinsdag","Wednesday":"Woensdag","Thursday":"Donderdag","Friday":"Vrijdag","Saturday":"Zaterdag"} %}
 {% set c = namespace(value=0) %}
 {% for punt in punten %}
 <tr>
@@ -25,7 +26,7 @@
         <td>{{punt["titel"]}}</td>
         <td>{{punt["datum"].split(' ')[0]}}</td>
         {% set date = punt["pub_datum"].split(' ')[0] %}
-        <td>{{punt["day"]}} {{date.split('-')[1]}}-{{date.split('-')[2]}}</td>
+        <td>{{weekday[punt["day"]]}} {{date.split('-')[2]}}-{{date.split('-')[1]}}</td>
         {% if score != 0.0 %}
         <td style="width: 25%;">
         <div class="progress">
@@ -45,7 +46,7 @@
         <td>{{punt["titel"]}}</td>
         <td>{{punt["datum"].split(' ')[0]}}</td>
         {% set date = punt["pub_datum"].split(' ')[0] %}
-        <td>{{punt["day"]}} {{date.split('-')[1]}}-{{date.split('-')[2]}}</td>
+        <td>{{weekday[punt["day"]]}} {{date.split('-')[2]}}-{{date.split('-')[1]}}</td>
         {% if score != 0.0 %}
         <td style="width: 25%;">
         <div class="progress">

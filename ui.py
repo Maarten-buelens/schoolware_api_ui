@@ -1,11 +1,15 @@
-from schoolware_api import schoolware_api
+import sys
+    # caution: path[0] is reserved for script path (or '' in REPL)
+sys.path.insert(1, '/home/mb/schoolware_api/schoolware_api')
+
+from schoolware_api import schoolware
 import json
 from flask import Flask, render_template, request
 
 
 
 config = json.loads(open("./config.json","r").read())
-schoolware = schoolware_api(config)
+schoolware = schoolware(config)
 app = Flask(__name__)
 
 

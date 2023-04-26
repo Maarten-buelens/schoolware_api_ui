@@ -1,6 +1,7 @@
 
 
 {% block content %}
+{% set weekday = {"Sunday":"Zondag","Monday":"Maandag","Tuesday":"Dinsdag","Wednesday":"Woensdag","Thursday":"Donderdag","Friday":"Vrijdag","Saturday":"Zaterdag"} %}
 <table style="height: 100%; width: 100%;">
 <tr>
     <th>soort</th>
@@ -12,12 +13,17 @@
 
 {% for punt in todo %}
 <tr>
-    <td>{{punt["soort"]}}</td>
+    {% if punt["soort"] == "toets" or punt["soort"] == "hertoets" %}
+
+    <td style="color: red;">{{punt["soort"]}}</td>
+    {% else %}
+    <td style="color: orange;">{{punt["soort"]}}</td>
+    {% endif %}
     <td>{{punt["vak"]}}</td>
     <td>{{punt["titel"]}}</td>
     <td>{{punt["onderwerp"]}}</td>
     {% set date = punt["eind_time"].split(' ')[0] %}
-    <td>{{punt["day"]}} {{date.split('-')[1]}}-{{date.split('-')[2]}}</td>
+    <td>{{weekday[punt["day"]]}} {{date.split('-')[2]}}-{{date.split('-')[1]}}</td>
 </tr>
 {% endfor %}
 </table>
