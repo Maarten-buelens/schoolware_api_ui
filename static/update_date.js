@@ -24,14 +24,20 @@ function update_date(up) {
         if (time.getMonth() + 1 < 10) {
             month = time.getMonth() + 1
             var month = "0" + month.toString();
-
         }
         else {
             var month = time.getMonth() + 1;
         }
 
+        if (time.getDate()< 10) {
+            day = time.getDate();
+            var day = "0" + day.toString();
+        }
+        else {
+            var day = time.getDate();
+        }
 
-        xhttp.open("GET", "/agenda?date=" + `${time.getFullYear()}-${month}-${time.getDate()}` + " 00:00:00");
+        xhttp.open("GET", "/agenda?date=" + `${time.getFullYear()}-${month}-${day}` + " 00:00:00");
         xhttp.send();
 
 
@@ -69,9 +75,15 @@ function update_date(up) {
         else {
             var month = time.getMonth() + 1;
         }
+        if (time.getDate()< 10) {
+            day = time.getDate();
+            var day = "0" + day.toString();
+        }
+        else {
+            var day = time.getDate();
+        }
 
-
-        xhttp.open("GET", "/agenda?date=" + `${time.getFullYear()}-${month}-${time.getDate()}` + " 00:00:00");
+        xhttp.open("GET", "/agenda?date=" + `${time.getFullYear()}-${month}-${day}` + " 00:00:00");
         xhttp.send();
 
     }
