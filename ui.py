@@ -23,13 +23,26 @@ def agenda():
     date = request.args.get('date', default="", type=str)
     return render_template("agenda.html", agenda=Schoolware.agenda(datum=date))
 
+@app.route("/agenda_api")
+def agenda():
+    date = request.args.get('date', default="", type=str)
+    return Schoolware.agenda(datum=date)#render_template("agenda.html", agenda=Schoolware.agenda(datum=date))
+
 @app.route("/punten")
 def punten():
     return render_template("punten.html", punten=Schoolware.punten())
 
+@app.route("/punten_api")
+def punten():
+    return Schoolware.punten()#render_template("punten.html", punten=Schoolware.punten())
+
 @app.route("/todo")
 def todo():
     return render_template("todo.html", todo=Schoolware.todo())
+
+@app.route("/todo_api")
+def todo():
+    return Schoolware.todo()#render_template("todo.html", todo=Schoolware.todo())
 
 Schoolware.telegram_point_diff()
 
