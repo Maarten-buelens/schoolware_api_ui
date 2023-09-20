@@ -1,2 +1,3 @@
 flask
 schoolware_api
+python-telegram-bot

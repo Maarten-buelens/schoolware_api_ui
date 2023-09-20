@@ -1,13 +1,16 @@
 from schoolware_api import schoolware
-
+import os
 import json
 from flask import Flask, render_template, request
 
 
-config = json.loads(open("./config.json","r").read())
+try:
+    config = json.loads(os.environ["config"])
+except Exception as e:
+    config = json.loads(open("./config.json","r").read())
 Schoolware = schoolware(config)
 app = Flask(__name__)
-
+Schoolware.telegram_point_diff()
 
 
 @app.route("/")
@@ -27,4 +30,6 @@ def punten():
 def todo():
     return render_template("todo.html", todo=Schoolware.todo())
 
-app.run(host="0.0.0.0", port=5000)
+Schoolware.telegram_point_diff()
+
+app.run(host="0.0.0.0", port=8080)

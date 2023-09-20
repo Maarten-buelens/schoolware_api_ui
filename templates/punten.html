@@ -21,12 +21,17 @@
 
         {% set score = (punt["score"]| float) * (punt["tot_sc"] | float) %}
         <td style="width: 4%;">{{punt["DW"]}}</td>
-        <td style="width: 4%;">{{punt["soort"]}}</td>
+        {% if punt["soort"] == "toets" or punt["soort"] == "hertoets" %}
+
+        <td style="color: red;width: 4%;">{{punt["soort"]}}</td>
+        {% else %}
+        <td style="color: orange;width: 4%;">{{punt["soort"]}}</td>
+        {% endif %}
         <td style="width: 10%;">{{punt["vak"]}}</td>
         <td>{{punt["titel"]}}</td>
-        <td>{{punt["datum"].split(' ')[0]}}</td>
+        <td>{{weekday[punt["day"]]}} {{punt["datum"].split(' ')[0].split('-')[2]}}-{{punt["datum"].split(' ')[0].split('-')[1]}}</td>
         {% set date = punt["pub_datum"].split(' ')[0] %}
-        <td>{{weekday[punt["day"]]}} {{date.split('-')[2]}}-{{date.split('-')[1]}}</td>
+        <td>{{weekday[punt["pub_day"]]}} {{date.split('-')[2]}}-{{date.split('-')[1]}}</td>
         {% if score != 0.0 %}
         <td style="width: 25%;">
         <div class="progress">
@@ -41,12 +46,17 @@
     {% else %}
         {% set score = (punt["score"]| float) * (punt["tot_sc"] | float) %}
         <td style="width: 4%;">{{punt["DW"]}}</td>
-        <td style="width: 4%;">{{punt["soort"]}}</td>
+        {% if punt["soort"] == "toets" or punt["soort"] == "hertoets" %}
+
+        <td style="color: red;width: 4%;">{{punt["soort"]}}</td>
+        {% else %}
+        <td style="color: orange;width: 4%;">{{punt["soort"]}}</td>
+        {% endif %}
         <td style="width: 10%;">{{punt["vak"]}}</td>
         <td>{{punt["titel"]}}</td>
-        <td>{{punt["datum"].split(' ')[0]}}</td>
+        <td>{{weekday[punt["day"]]}} {{punt["datum"].split(' ')[0].split('-')[2]}}-{{punt["datum"].split(' ')[0].split('-')[1]}}</td>
         {% set date = punt["pub_datum"].split(' ')[0] %}
-        <td>{{weekday[punt["day"]]}} {{date.split('-')[2]}}-{{date.split('-')[1]}}</td>
+        <td>{{weekday[punt["pub_day"]]}} {{date.split('-')[2]}}-{{date.split('-')[1]}}</td>
         {% if score != 0.0 %}
         <td style="width: 25%;">
         <div class="progress">
