@@ -1,6 +1,7 @@
 # schoolware_api_ui
 a nice web ui for schoolware_api in python
 using flask and js
+also has an api for an android app
 
 ## install
 * `git clone https://github.com/Maarten-buelens/schoolware_api_ui`
