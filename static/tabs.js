@@ -13,6 +13,7 @@ function tabs(tab) {
         document.getElementById("1").classList.add("hover");
         document.getElementById("2").classList.remove("hover");
         document.getElementById("3").classList.remove("hover");
+        document.getElementById("4").classList.remove("hover");
 
 
         element.innerHTML = "<div class='loader'></div>";
@@ -55,6 +56,7 @@ function tabs(tab) {
         document.getElementById("1").classList.remove("hover");
         document.getElementById("2").classList.add("hover");
         document.getElementById("3").classList.remove("hover");
+        document.getElementById("4").classList.remove("hover");
 
 
         element.innerHTML = "<div class='loader'></div>";
@@ -73,6 +75,7 @@ function tabs(tab) {
         document.getElementById("1").classList.remove("hover");
         document.getElementById("2").classList.remove("hover");
         document.getElementById("3").classList.add("hover");
+        document.getElementById("4").classList.remove("hover");
 
 
         element.innerHTML = "<div class='loader'></div>";
@@ -85,6 +88,26 @@ function tabs(tab) {
         xhttp.send();
 
     }
+
+    //for todo
+    if (tab == 4) {
+            document.cookie = "page=4;expires=Fri, 31 Dec 9999 23:59:59 GMT";
+            document.getElementById("1").classList.remove("hover");
+            document.getElementById("2").classList.remove("hover");
+            document.getElementById("3").classList.remove("hover");
+            document.getElementById("4").classList.add("hover");
+    
+    
+            element.innerHTML = "<div class='loader'></div>";
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                element.innerHTML = "<div class='loader'></div>".innerHTML =
+                    this.responseText;
+            }
+            xhttp.open("GET", "/jaartotaal");
+            xhttp.send();
+    
+        }
 }
 
 function agenda_date() {

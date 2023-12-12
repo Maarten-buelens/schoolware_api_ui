@@ -1,3 +1,4 @@
 flask
 schoolware_api
 python-telegram-bot
+git+https://git.mb-server.com/maarten/schoolware_api_tools.git

@@ -1,8 +1,8 @@
 function arrows(e) {
 if (e.key === 'ArrowRight') {
     state += 1
-    if(state > 3){
-      state = 3
+    if(state > 4){
+      state = 4
     }
     tabs(state)
 }

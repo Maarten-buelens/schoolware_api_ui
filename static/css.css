@@ -10,7 +10,7 @@ body {font-family: Arial;}
 
 /* Style the buttons inside the tab */
 .tab button {
-  width: 33.33%;
+  width: 25%;
   background-color: inherit;
   float: left;
   border: none;
@@ -97,7 +97,7 @@ body {font-family: Arial;}
 
   .button {
     border : 0;
-    width: 33.33%;
+    width: 25%;
     float: left;
     background-color: #2ea44f;
     color: white;

@@ -1,0 +1,23 @@
+{% block content %}
+<table style="height: 100%; width: 100%;">
+<tr>
+    <th>vak</th>
+    <th>DW1</th>
+    <th>DW2</th>
+    <th>DW3</th>
+    <th>DW4</th>
+    <th>DW5</th>
+
+</tr>
+{% for dw in result %}
+<tr>
+    <td>{{dw["vak"]}}</td>
+    <td>{{dw["DW1"]}}%</td>
+    <td>{{dw["DW2"]}}%</td>
+    <td>{{dw["DW3"]}}%</td>
+    <td>{{dw["DW4"]}}%</td>
+    <td>{{dw["DW5"]}}%</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

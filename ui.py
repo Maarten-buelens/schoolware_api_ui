@@ -13,6 +13,12 @@ Schoolware = schoolware(config)
 app = Flask(__name__)
 Schoolware.telegram_point_diff()
 
+if("jaartotaal" in config and config["jaartotaal"] == True):
+    from schoolware_api_tools import schoolware_tools
+    vaardigheden = config["vaardigheden"]
+    vakken = config["vakken"]
+    calc = schoolware_tools(schoolware=Schoolware)
+
 
 @app.route("/")
 def base():
@@ -43,6 +49,12 @@ def todo():
 @app.route("/todo_api")
 def todo_api():
     return Schoolware.todo()#render_template("todo.html", todo=Schoolware.todo())
+
+if(config["jaartotaal"] == True):
+    @app.route("/jaartotaal")
+    def jaartotaal():
+        jaartotaal_result = calc.alle_vakken(vakken=vakken,vaardigheden=vaardigheden)
+        return render_template("jaartotaal.html", result=jaartotaal_result)
 
 Schoolware.telegram_point_diff()
 
