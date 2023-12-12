@@ -7,6 +7,7 @@
     <th>DW3</th>
     <th>DW4</th>
     <th>DW5</th>
+    <th>jaar</th>
 
 </tr>
 {% for dw in result %}
@@ -17,6 +18,7 @@
     <td>{{dw["DW3"]}}%</td>
     <td>{{dw["DW4"]}}%</td>
     <td>{{dw["DW5"]}}%</td>
+    <td>+-{{dw["jaartotaal"]}}%</td>
 </tr>
 {% endfor %}
 </table>
