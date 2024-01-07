@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="static/bootstrap.css">
   <link rel="stylesheet" href="static/css.css">
     <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %} Custom schoolware</title>
+    <title>Custom schoolware</title>
 </head>
 
-<body style="line-height: 1.5;font-size: 16px;letter-spacing: 0em;font-weight: 600;">
-      <div class="multi-button">
-        <button id="1" class="button out-left" onclick="tabs(1)">agenda</button>
-        <button id="2" class="button" onclick="tabs(2)">punten</button>
-        <button id="3" class="button" onclick="tabs(3)">taken</button>
-        <button id="4" class="button out-right" onclick="tabs(4)">jaartotaal</button>
-      </div>
+<body style="line-height: 1.5;font-size: 16px;letter-spacing: 0em;font-weight: 600;" class="bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" id="agenda" href="/agenda">agenda</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" id="agenda_week" href="/agenda_week">agenda-week</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="punten" href="/punten">punten</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="todo" href="/todo">todo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="jaartotaal" href="/jaartotaal">jaartotaal</a>
+        </li>
+      </ul>
     </div>
-    <div id="content"> 
-      
+  </nav>
 
-    </div>
+<div id="content">
+  {% block content %} {% endblock %}
+</div>
+
+
+
 </body>
 
-<script src="static/tabs.js"></script>
-<script src="static/keyboard.js"></script>
-<script src="static/cookie.js"></script>
-<script src="static/current_date.js"></script>
-<script src="static/update_date.js"></script>
-<script src="static/main.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="/static/popper.js"></script>
+<script src="/static/bootstrap.js" ></script>
+<script src="/static/keyboard.js"></script>
+<script src="/static/main.js"></script>
 
 </html>

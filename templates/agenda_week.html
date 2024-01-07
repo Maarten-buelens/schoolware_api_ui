@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid" style="text-align: center;">
+    <div class="row">
+        <div class="col-6 text-left">
+            <button id="prev" type="button text-left" class="btn btn-primary nav_btn"
+                onclick="window.location.href='/agenda_week?date={{ prev_date }}';"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></button>
+        </div>
+        <div class="col-6 text-right">
+            <button id="next" type="button" class="btn btn-primary nav_btn "
+                onclick="window.location.href='/agenda_week?date={{ next_date }}';"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></button>
+        </div>
+    </div>
+
+    <div class="row">
+
+    {% for day in days %}
+    <div class="col" style="width: 20%">
+        <div class="mx-auto text-center mt-3" style="font-size: xx-large;color: white;">{{day.date}}</div>
+    <table class="table table-striped table-dark">
+        
+        <thead>
+            <tr>
+                <th>vak</th>
+                <th>titel</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for punt in day.points %}
+            <tr>
+                <td>{{punt["vak"]}}</td>
+                <td>{{punt["titel"]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    {% endfor %}
+</div>
+    {% endblock %}

@@ -1,25 +1,38 @@
-
+{% extends 'base.html' %}
 
 {% block content %}
-<div id="date" class="button out-left out-right" style="width: 15%; margin-top: 10px;margin-left: auto;margin-right: auto;float: unset;position: relative;top: 55px;text-align: center;overflow: auto;" onclick=""></div>
-<script>display_current_date();</script>
-<button class="button out-right out-left" style="float: left;width: 15%; margin-top: 20px;" onclick="update_date(false)">&lt;</button>
-<button class="button out-left out-right" style="float: right;width: 15%; margin-top: 20px;" onclick="update_date(true)">&gt;</button>
+<div class="container-fluid" style="text-align: center;">
+    <div class="row">
+        <div class="col-6 text-left">
+            <button id="prev" type="button text-left" class="btn btn-primary nav_btn"
+                onclick="window.location.href='/agenda?date={{ prev_date }}';"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></button>
+        </div>
+        <div class="col-6 text-right">
+            <button id="next" type="button" class="btn btn-primary nav_btn "
+                onclick="window.location.href='/agenda?date={{ next_date }}';"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+            </button>
+        </div>
+    </div>
 
-<table style="height: 100%; width: 100%;">
-<tr>
-    <th>vak</th>
-    <th>titel</th>
-    <th>lokaal</th>
-</tr>
-{% for punt in agenda %}
-<tr>
-    <td>{{punt["vak"]}}</td>
-    <td>{{punt["titel"]}}</td>
-    <td>{{punt["lokaal"]}}</td>
-</tr>
-{% endfor %}
-</table>
-
-
+    <div class="mx-auto text-center mt-3" >
+        <h2 id="date" style="color: white;">{{display_date}}</h2>
+    </div>
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>vak</th>
+                <th>titel</th>
+                <th>lokaal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for punt in agenda %}
+            <tr>
+                <td>{{punt["vak"]}}</td>
+                <td>{{punt["titel"]}}</td>
+                <td>{{punt["lokaal"]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
