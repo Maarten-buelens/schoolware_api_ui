@@ -1,13 +1,26 @@
-FROM python:3
+FROM python:3.12-slim
 
 WORKDIR /usr/src/app
 
 COPY requirements.txt ./
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y locales
-RUN sed -i -e 's/# nl_BE.UTF-8 UTF-8/nl_BE.UTF-8 UTF-8/' /etc/locale.gen && \
-    dpkg-reconfigure --frontend=noninteractive locales && \
-    update-locale LANG=nl_BE.UTF-8
-ENV LANG nl_BE.UTF-8
+
+# Set the locale
+ENV LANG=nl_BE.UTF-8
+ENV LANGUAGE=nl_BE:nl
+ENV LC_ALL=nl_BE.UTF-8
+
+# Install locales package
+RUN apt-get update && \
+    apt-get install -y locales && \
+    rm -rf /var/lib/apt/lists/* && \
+    sed -i -e 's/# \(nl_BE.UTF-8\)/\1/' /etc/locale.gen && \
+    locale-gen
+RUN apt-get update && apt-get install -y git
+# Your additional Dockerfile commands go here
+
+# Specify the default command to run on container start
+
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .

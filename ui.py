@@ -4,7 +4,9 @@ import json
 from flask import Flask, render_template, request
 import datetime
 import locale
-language_code = 'nl_BE.ISO8859-1'  # Change this to the desired language code
+
+
+language_code = 'nl_BE.UTF-8'  # Change this to the desired language code
 
 # Set the locale for the specified language
 locale.setlocale(locale.LC_ALL, language_code)
@@ -84,4 +86,4 @@ if(config["jaartotaal"] == True):
 
 Schoolware.telegram_point_diff()
 
-app.run(host="0.0.0.0", port=8080, debug=True)
+app.run(host="0.0.0.0", port=8080, debug=False)
