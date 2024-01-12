@@ -16,12 +16,9 @@ RUN apt-get update && \
     sed -i -e 's/# \(nl_BE.UTF-8\)/\1/' /etc/locale.gen && \
     locale-gen
 RUN apt-get update && apt-get install -y git
-# Your additional Dockerfile commands go here
-
-# Specify the default command to run on container start
-
 
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
+RUN playwright install && playwright install-deps
 CMD [ "python", "./ui.py" ]

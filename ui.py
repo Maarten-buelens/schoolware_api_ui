@@ -60,7 +60,7 @@ def agenda_week():
 @app.route("/agenda_api")
 def agenda_api():
     date = request.args.get('date', default="", type=str)
-    return Schoolware.agenda(datum=date)#render_template("agenda.html", agenda=Schoolware.agenda(datum=date))
+    return Schoolware.agenda(datum=date)
 
 @app.route("/punten")
 def punten():
@@ -68,7 +68,7 @@ def punten():
 
 @app.route("/punten_api")
 def punten_api():
-    return Schoolware.punten()#render_template("punten.html", punten=Schoolware.punten())
+    return Schoolware.punten()
 
 @app.route("/todo")
 def todo():
@@ -76,14 +76,13 @@ def todo():
 
 @app.route("/todo_api")
 def todo_api():
-    return Schoolware.todo()#render_template("todo.html", todo=Schoolware.todo())
+    return Schoolware.todo()
 
-if(config["jaartotaal"] == True):
+if("jaartotaal" in config and config["jaartotaal"] == True):
     @app.route("/jaartotaal")
     def jaartotaal():
         jaartotaal_result = calc.alle_vakken(vakken=vakken,vaardigheden=vaardigheden)
         return render_template("jaartotaal.html", result=jaartotaal_result)
 
-Schoolware.telegram_point_diff()
 
 app.run(host="0.0.0.0", port=8080, debug=False)
