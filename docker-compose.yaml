@@ -1,0 +1,11 @@
+version: "3"
+services:
+  schoolware_ui:
+    image: schoolwareapi/schoolware_api_ui:main
+    container_name: schoolware_ui
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      config: '{"domain":"","password":"","user":""}' # basic config
+    
