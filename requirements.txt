@@ -1,4 +1,4 @@
 flask
-schoolware_api==1.11.0
+schoolware_api
 python-telegram-bot
 git+https://github.com/Maarten-buelens/schoolware_api_tools.git
